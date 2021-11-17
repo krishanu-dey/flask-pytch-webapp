@@ -20,6 +20,9 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   const launchRename = useStoreActions(
     (actions) => actions.userConfirmations.renameProjectInteraction.launch
   );
+  const submitInstrumentationEvent = useStoreActions(
+    (actions) => actions.sessionState.submitEvent
+  );
 
   const dismissButtonTour = useStoreActions(
     (actions) => actions.ideLayout.dismissButtonTour
@@ -38,7 +41,12 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     });
   };
 
-  const onActivate = () => {
+  const onActivate = (userActionKind: string) => {
+    submitInstrumentationEvent({
+      kind: "open-project",
+      detail: { userActionKind, projectId: project.id },
+    });
+
     dismissButtonTour();
     navigate(linkTarget);
   };
@@ -49,10 +57,16 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
   return (
     <li>
-      <Alert onClick={onActivate} className="ProjectCard" variant="success">
+      <Alert
+        onClick={() => onActivate("card-click")}
+        className="ProjectCard"
+        variant="success"
+      >
         <div className="dropdown-wrapper" onClick={(e) => e.stopPropagation()}>
           <DropdownButton title="⋮">
-            <Dropdown.Item onClick={onActivate}>Open</Dropdown.Item>
+            <Dropdown.Item onClick={() => onActivate("open-menu-item-click")}>
+              Open
+            </Dropdown.Item>
             <Dropdown.Item onClick={onRename}>Rename...</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item className="danger" onClick={onDelete}>
