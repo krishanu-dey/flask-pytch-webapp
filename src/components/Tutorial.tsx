@@ -1,9 +1,10 @@
 import React, { createRef, useEffect, useRef } from "react";
 import { useStoreState, useStoreActions } from "../store";
 import RawElement from "./RawElement";
-import { failIfNull } from "../utils";
+import { assertNever, failIfNull } from "../utils";
 
 import "../pytch-tutorial.scss";
+import { ChapterNavigationOrigin } from "../model/project";
 
 interface TutorialNavigationProps {
   kind: "prev" | "next"; // TODO: Change to enum?
@@ -18,6 +19,20 @@ const navigationIntroFromKind = (kind: string) => {
       return "Next";
     default:
       throw Error(`unknown nav-kind ${kind}`);
+  }
+};
+
+// TODO: Unify these types?
+const originFromKind = (
+  kind: TutorialNavigationProps["kind"]
+): ChapterNavigationOrigin => {
+  switch (kind) {
+    case "prev":
+      return "prev-button";
+    case "next":
+      return "next-button";
+    default:
+      return assertNever(kind);
   }
 };
 
