@@ -150,10 +150,7 @@ export const projectDescriptorFromURL = async (
   return projectDescriptor(undefined, data);
 };
 
-const demosDataRoot = failIfNull(
-  process.env.REACT_APP_DEMOS_BASE,
-  "must set REACT_APP_DEMOS_BASE env.var"
-);
+const demosDataRoot = '/demos';
 
 export const demoURLFromId = (id: string): string =>
   [demosDataRoot, `${id}.zip`].join("/");
