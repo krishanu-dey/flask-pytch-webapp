@@ -63,20 +63,21 @@ const InfoPanel = () => {
       <Tabs
         className={`InfoPanel ${layoutKind}`}
         transition={false}
-        activeKey={activeKey}
+        activeKey="output"
         onSelect={(k) => setActiveKey(k as string)}
+        defaultActiveKey="output"
       >
+        {/* <Tab className="InfoPane" eventKey="assets" title="Images and sounds">
+          <ProjectAssetList />
+        </Tab> */}
+        <Tab className="InfoPane" eventKey="output" title="Output">
+          <StandardOutput />
+        </Tab>
         {isTrackingTutorial && (
           <Tab className="InfoPane" eventKey="tutorial" title="Tutorial">
             <Tutorial />
           </Tab>
         )}
-        <Tab className="InfoPane" eventKey="assets" title="Images and sounds">
-          <ProjectAssetList />
-        </Tab>
-        <Tab className="InfoPane" eventKey="output" title="Output">
-          <StandardOutput />
-        </Tab>
         <Tab className="InfoPane" eventKey="errors" title="Errors">
           <Errors />
         </Tab>

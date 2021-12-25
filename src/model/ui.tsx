@@ -293,7 +293,7 @@ export interface IInfoPanel {
 }
 
 export const infoPanel: IInfoPanel = {
-  activeTabKey: "assets",
+  activeTabKey: "output",
   setActiveTabKey: action((state, key) => {
     state.activeTabKey = key;
   }),
