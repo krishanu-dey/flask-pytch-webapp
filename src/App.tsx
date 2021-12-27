@@ -23,7 +23,7 @@ const UnknownRoute = (props: RouteComponentProps) => {
       <div className="unknown-route">
         <p>Sorry, we could not find that page.</p>
         <p>
-          Try returning to the <Link to="/">Pytch homepage</Link>.
+          Try returning to the <Link to="/">Flask from Scratch homepage</Link>.
         </p>
       </div>
     </>

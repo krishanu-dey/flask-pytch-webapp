@@ -35,6 +35,7 @@
     "react-dom": "^16.13.1",
     "react-project-graph": "^1.0.0",
     "react-redux": "^7.2.1",
+    "react-router-dom": "^6.2.1",
     "scratchblocks": "^3.5.2",
     "standardized-audio-context": "^25.1.9",
     "typescript": "^3.8.3"
