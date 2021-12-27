@@ -37,11 +37,11 @@ export const uploadZipfilesInteraction: IProcessFilesInteraction = {
           projectInfo.codeText
         );
 
-        await Promise.all(
-          projectInfo.assets.map((a) =>
-            addAssetToProject(project.id, a.name, a.mimeType, a.data)
-          )
-        );
+        // await Promise.all(
+        //   projectInfo.assets.map((a) =>
+        //     addAssetToProject(project.id, a.name, a.mimeType, a.data)
+        //   )
+        // );
 
         newProjectIds.push(project.id);
       } catch (e) {

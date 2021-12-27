@@ -68,7 +68,7 @@ const downloadZipfileSpecific: IDownloadZipfileSpecific = {
     state.liveCreationSeqnum += 1;
   }),
 
-  filename: "pytch-project.zip",
+  filename: "flask-project.zip",
   setFilename: action((state, filename) => {
     state.filename = filename;
   }),
@@ -112,15 +112,15 @@ const downloadZipfileSpecific: IDownloadZipfileSpecific = {
 
     zipFile.file("code/code.py", project.codeText);
 
-    // Ensure folder exists, even if there are no assets.
-    zipFile.folder("assets");
-    await Promise.all(
-      project.assets.map(async (asset) => {
-        // TODO: Once we're able to delete assets, the following might fail:
-        const data = await assetData(asset.id);
-        zipFile.file(`assets/${asset.name}`, data);
-      })
-    );
+    // // Ensure folder exists, even if there are no assets.
+    // zipFile.folder("assets");
+    // await Promise.all(
+    //   project.assets.map(async (asset) => {
+    //     // TODO: Once we're able to delete assets, the following might fail:
+    //     const data = await assetData(asset.id);
+    //     zipFile.file(`assets/${asset.name}`, data);
+    //   })
+    // );
 
     const zipContents = await zipFile.generateAsync({ type: "uint8array" });
 
