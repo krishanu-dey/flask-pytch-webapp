@@ -48,7 +48,8 @@ export const build = async (
     Sk.pytch.async_load_image = (name: string) => {
       return assetServer.loadImage(name);
     };
-    await Sk.pytchsupport.import_with_auto_configure(project.codeText);
+    var mod = await Sk.pytchsupport.import_with_auto_configure(project.codeText);
+    console.log(mod)
     
     return { kind: BuildOutcomeKind.Success };
   } catch (err) {

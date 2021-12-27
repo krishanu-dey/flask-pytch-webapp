@@ -81,7 +81,7 @@ $tooltip-background-color: #151;
 .StageControls {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   div.StageControlPseudoButton {
     height: 36px;

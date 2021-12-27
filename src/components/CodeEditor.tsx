@@ -7,7 +7,7 @@ import "ace-builds/src-noconflict/ext-searchbox";
 import { useStoreState, useStoreActions } from "../store";
 import { setAceController } from "../skulpt-connection/code-editor";
 import { IAceEditor } from "react-ace/lib/types";
-import { PytchAceAutoCompleter } from "../skulpt-connection/code-completion";
+// import { PytchAceAutoCompleter } from "../skulpt-connection/code-completion";
 import { failIfNull } from "../utils";
 import { HelpSidebar, HelpSidebarOpenControl } from "./HelpSidebar";
 
@@ -86,7 +86,7 @@ const CodeAceEditor = () => {
         ref={aceRef}
         mode="python"
         theme="github"
-        enableBasicAutocompletion={[new PytchAceAutoCompleter() as any]}
+        // enableBasicAutocompletion={[new PytchAceAutoCompleter() as any]}
         value={codeTextOrPlaceholder}
         name="pytch-ace-editor"
         fontSize={16}

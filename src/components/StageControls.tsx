@@ -52,13 +52,13 @@ const GreenFlag = () => {
   );
 };
 
-const RedStop = () => {
-  const redStop = () => {
-    Sk.pytch.current_live_project.on_red_stop_clicked();
-    focusStage();
-  };
-  return <div className="StageControlPseudoButton RedStop" onClick={redStop} />;
-};
+// const RedStop = () => {
+//   const redStop = () => {
+//     Sk.pytch.current_live_project.on_red_stop_clicked();
+//     focusStage();
+//   };
+//   return <div className="StageControlPseudoButton RedStop" onClick={redStop} />;
+// };
 
 const StageControls = () => {
   const { codeStateVsStorage } = useStoreState((state) => state.activeProject);
@@ -85,7 +85,7 @@ const StageControls = () => {
   return (
     <div className="StageControls">
       <GreenFlag />
-      <RedStop />
+      {/* <RedStop /> */}
       <Button
         className={`save-button ${codeStateVsStorage}`}
         onClick={handleSave}
