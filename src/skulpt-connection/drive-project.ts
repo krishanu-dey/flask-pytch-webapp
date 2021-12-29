@@ -2,12 +2,6 @@ import {
   AttributeWatcherRenderInstruction,
   RenderInstruction,
 } from "./render-instructions";
-import {
-  stageWidth,
-  stageHalfWidth,
-  stageHeight,
-  stageHalfHeight,
-} from "../constants";
 import { failIfNull } from "../utils";
 import {
   IQuestionFromVM,
@@ -16,6 +10,11 @@ import {
 import { batch } from "react-redux";
 
 declare var Sk: any;
+
+const stageWidth = 0;
+const stageHalfWidth = 0;
+const stageHeight = 0;
+const stageHalfHeight = 0;
 
 // Ensure the "Sk.pytch" sub-environment exists.  We will
 // configure it properly on build.

@@ -81,7 +81,7 @@ $tooltip-background-color: #151;
 .StageControls {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
 
   div.StageControlPseudoButton {
     height: 36px;
@@ -91,6 +91,7 @@ $tooltip-background-color: #151;
   > * {
     margin-left: 3px;
     margin-right: 3px;
+    margin-bottom: 5px;
   }
 
   > *:first-child {

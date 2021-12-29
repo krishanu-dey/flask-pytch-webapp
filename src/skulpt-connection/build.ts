@@ -1,3 +1,4 @@
+import { Modal } from "react-bootstrap";
 import { IProjectContent } from "../model/project";
 import { assetServer } from "./asset-server";
 import { ensureSoundManager } from "./sound-manager";
@@ -22,6 +23,7 @@ export enum BuildOutcomeKind {
 
 interface BuildSuccess {
   kind: BuildOutcomeKind.Success;
+  compiledMod: any,
 }
 
 interface BuildFailure {
@@ -36,7 +38,7 @@ export const build = async (
   addOutputChunk: (chunk: string) => void,
   handleError: (pytchError: any, errorContext: any) => void
 ): Promise<BuildOutcome> => {
-  // This also resets the current_live_project slot.
+  // This also resets the current_livrendering Stagee_project slot.
   Sk.configure({
     __future__: Sk.python3,
     read: builtinRead,
@@ -48,10 +50,11 @@ export const build = async (
     Sk.pytch.async_load_image = (name: string) => {
       return assetServer.loadImage(name);
     };
-    var mod = await Sk.pytchsupport.import_with_auto_configure(project.codeText);
+    var mod = await Sk.misceval.asyncToPromise(
+      () => Sk.importMainWithBody("<stdin>", false, project.codeText, true)); 
     console.log(mod)
     
-    return { kind: BuildOutcomeKind.Success };
+    return { kind: BuildOutcomeKind.Success, compiledMod: mod };
   } catch (err) {
     return { kind: BuildOutcomeKind.Failure, error: err };
   }

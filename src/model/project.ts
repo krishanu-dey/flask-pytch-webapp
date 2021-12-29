@@ -136,6 +136,9 @@ export interface IActiveProject {
   buildSeqnum: number;
   tutorialNavigationSeqnum: number;
 
+  compiledMod: any;
+  setCompiledMod: Action<IActiveProject, any>;
+
   haveProject: Computed<IActiveProject, boolean>;
 
   codeTextOrPlaceholder: Computed<IActiveProject, string>;
@@ -216,6 +219,11 @@ export const activeProject: IActiveProject = {
   codeStateVsStorage: "no-changes-since-last-save",
   buildSeqnum: 0,
   tutorialNavigationSeqnum: 0,
+
+  compiledMod: null,
+  setCompiledMod: action((state, compiledMod) => {
+    state.compiledMod = compiledMod;
+  }),
 
   noteCodeChange: action((state) => {
     state.codeStateVsStorage = "unsaved-changes-exist";
@@ -587,6 +595,7 @@ export const activeProject: IActiveProject = {
       console.log("build outcome:", buildOutcome);
 
       if (buildOutcome.kind === BuildOutcomeKind.Success) {
+        actions.setCompiledMod(buildOutcome.compiledMod);
         switch (focusDestination) {
           case "running-project":
             document.getElementById("pytch-speech-bubbles")?.focus();

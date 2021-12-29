@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { BrowserKeyboard } from "../skulpt-connection/browser-keyboard";
-import { BrowserMouse } from "../skulpt-connection/browser-mouse";
 import { IWebAppAPI, ProjectEngine } from "../skulpt-connection/drive-project";
 import { useStoreActions, useStoreState } from "../store";
 import { failIfNull } from "../utils";
@@ -13,13 +12,13 @@ const Stage = () => {
   // the rendered component, but depending on it causes a re-render
   // and a re-set-up of the mouse/keyboard/engine when there's a new
   // Sk.pytch.current_live_project.
-  const buildSeqnum = useStoreState((state) => state.activeProject.buildSeqnum);
+  const compiledMod = useStoreState((state) => state.activeProject.compiledMod);
   const displaySize = useStoreState(
     (state) => state.ideLayout.stageDisplaySize
   );
-  const resizeIsActive = useStoreState(
-    (state) => state.ideLayout.stageVerticalResizeState != null
-  );
+  // const resizeIsActive = useStoreState(
+  //   (state) => state.ideLayout.stageVerticalResizeState != null
+  // );
 
   const {
     reset: resetQuestion,
@@ -43,11 +42,11 @@ const Stage = () => {
   const bubblesRef: React.RefObject<HTMLDivElement> = React.createRef();
 
   const browserKeyboardRef = useRef<BrowserKeyboard | null>(null);
-  const browserMouseRef = useRef<BrowserMouse | null>(null);
+  //const browserMouseRef = useRef<BrowserMouse | null>(null);
   const projectEngineRef = useRef<ProjectEngine | null>(null);
 
   useEffect(() => {
-    console.log("Stage effect: setting up keyboard/mouse/engine", buildSeqnum);
+    console.log("Stage effect: setting up keyboard/mouse/engine", compiledMod);
 
     const canvas = failIfNull(
       canvasRef.current,
@@ -63,7 +62,7 @@ const Stage = () => {
 
     // All these ctors also "activate" the new object.
     browserKeyboardRef.current = new BrowserKeyboard(bubblesDiv);
-    browserMouseRef.current = new BrowserMouse(bubblesDiv);
+    //browserMouseRef.current = new BrowserMouse(bubblesDiv);
     projectEngineRef.current = new ProjectEngine(canvas, bubblesDiv, webAppAPI);
 
     resetQuestion();
@@ -71,7 +70,7 @@ const Stage = () => {
     return () => {
       console.log("Stage effect: tearing down keyboard/mouse/engine");
       browserKeyboardRef.current!.deactivate();
-      browserMouseRef.current!.deactivate();
+      //browserMouseRef.current!.deactivate();
       projectEngineRef.current!.requestHalt();
     };
   });
@@ -81,37 +80,62 @@ const Stage = () => {
     height: `${displaySize.height}px`,
   };
 
-  // When resizing, the stage rendering flickers with what seems to be a
-  // first render before the transformation has been set.  Hide the
-  // stage while a drag-resize is in progress.
-  //
-  // TODO: Work out why flickering happens in the first place, and see
-  // if there's a tidier way to do this.
-  const resizeClass = resizeIsActive ? "resize-active" : undefined;
+  // // When resizing, the stage rendering flickers with what seems to be a
+  // // first render before the transformation has been set.  Hide the
+  // // stage while a drag-resize is in progress.
+  // //
+  // // TODO: Work out why flickering happens in the first place, and see
+  // // if there's a tidier way to do this.
+  // const resizeClass = false ? "resize-active" : undefined;
+
+  const embeddedBrowserStyle = {
+    width: `${displaySize.width}px`,
+    height: `${displaySize.height}px`,
+    border: "1px grey",
+    background: "white",
+  }
+
+  const srcDoc = `<h1> Home Page </h1><i> this is the home page</i><br /> 
+  <a 
+href='/login'">Login</a> 
+  <a href='/signup'>Signup</a>`
 
   return (
     <div id="pytch-stage-container">
-      <div id="pytch-stage-layers">
-        <canvas
-          ref={canvasRef}
-          id="pytch-canvas"
-          className={resizeClass}
+      <iframe
+          srcDoc={srcDoc}
+          title="output"
+          sandbox="allow-forms allow-same-origin allow-scripts"
           width={displaySize.width}
           height={displaySize.height}
+          id="sandbox-preview" 
+          style={embeddedBrowserStyle}
         />
+      <div id="pytch-stage-layers">
+        
+        {/* <div style={embeddedBrowserStyle} >
+          <div 
+            dangerouslySetInnerHTML={{__html: srcDoc}} 
+          />
+        </div> */}
+        
         <VariableWatchers />
         <div
           ref={bubblesRef}
           id="pytch-speech-bubbles"
-          className={resizeClass}
           style={sizeStyle}
         />
         <div
           id="stage-resize-indicator"
-          className={resizeClass}
           style={sizeStyle}
         />
       </div>
+      <canvas
+          ref={canvasRef}
+          id="pytch-canvas"
+          width={displaySize.width*0}
+          height={displaySize.height*0}
+        />
     </div>
   );
 };

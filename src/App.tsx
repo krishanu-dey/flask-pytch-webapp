@@ -9,6 +9,7 @@ import "./pytch.scss";
 import "./pytch-ide.scss";
 import "./help-sidebar.scss";
 import "./font-awesome-lib";
+//import "./jinja";
 
 import { AllModals } from "./components/AllModals";
 import { SingleTutorial } from "./components/SingleTutorial";
