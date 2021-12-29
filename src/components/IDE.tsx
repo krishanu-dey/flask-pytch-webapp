@@ -3,7 +3,7 @@ import { RouteComponentProps } from "@reach/router";
 import { useStoreState, useStoreActions } from "../store";
 
 import CodeEditor from "./CodeEditor";
-import QuestionInputPanel from "./QuestionInputPanel";
+// import QuestionInputPanel from "./QuestionInputPanel";
 import Stage from "./Stage";
 import StageControls from "./StageControls";
 import InfoPanel from "./InfoPanel";
@@ -27,7 +27,7 @@ const StageWithControls = () => {
       <StageControls />
       <div className="stage-and-text-input">
         <Stage />
-        <QuestionInputPanel />
+        {/* <QuestionInputPanel /> */}
       </div>
     </div>
   );
@@ -93,18 +93,18 @@ const IDE: React.FC<IDEProps> = ({ projectIdString }) => {
     (actions) => actions.activeProject
   );
 
-  useEffect(() => {
-    Sk.pytch.current_live_project =
-      Sk.default_pytch_environment.current_live_project;
-    document.title = `Project ${projectId}`;
+   useEffect(() => {
+  //   Sk.pytch.current_live_project =
+  //     Sk.default_pytch_environment.current_live_project;
+  //   document.title = `Project ${projectId}`;
 
-    ensureSyncFromStorage(projectId);
+      ensureSyncFromStorage(projectId);
 
-    return () => {
-      Sk.pytch.current_live_project =
-        Sk.default_pytch_environment.current_live_project;
-    };
-  });
+  //   return () => {
+  //     Sk.pytch.current_live_project =
+  //       Sk.default_pytch_environment.current_live_project;
+  //   };
+   });
 
   if (syncState.loadState === "failed") {
     return (

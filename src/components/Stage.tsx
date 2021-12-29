@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { BrowserKeyboard } from "../skulpt-connection/browser-keyboard";
-import { IWebAppAPI, ProjectEngine } from "../skulpt-connection/drive-project";
+// import { BrowserKeyboard } from "../skulpt-connection/browser-keyboard";
+// import { IWebAppAPI, ProjectEngine } from "../skulpt-connection/drive-project";
 import { useStoreActions, useStoreState } from "../store";
 import { failIfNull } from "../utils";
-import { VariableWatchers } from "./VariableWatchers";
+// import { VariableWatchers } from "./VariableWatchers";
 
 const Stage = () => {
   console.log("rendering Stage");
@@ -20,60 +20,60 @@ const Stage = () => {
   //   (state) => state.ideLayout.stageVerticalResizeState != null
   // );
 
-  const {
-    reset: resetQuestion,
-    setQuestion,
-    maybeAcquireSubmission,
-  } = useStoreActions((actions) => actions.userTextInput);
+  // const {
+  //   reset: resetQuestion,
+  //   // setQuestion,
+  //   // maybeAcquireSubmission,
+  // } = useStoreActions((actions) => actions.userTextInput);
 
-  const setVariableWatchers = useStoreActions(
-    (actions) => actions.variableWatchers.setWatchers
-  );
+  // const setVariableWatchers = useStoreActions(
+  //   (actions) => actions.variableWatchers.setWatchers
+  // );
 
-  const webAppAPI: IWebAppAPI = {
-    clearUserQuestion: () => resetQuestion(),
-    askUserQuestion: (q) => setQuestion(q),
-    maybeAcquireUserInputSubmission: () => maybeAcquireSubmission(),
+  // const webAppAPI: IWebAppAPI = {
+  //   clearUserQuestion: () => resetQuestion(),
+  //   askUserQuestion: (q) => setQuestion(q),
+  //   maybeAcquireUserInputSubmission: () => maybeAcquireSubmission(),
 
-    setVariableWatchers: (ws) => setVariableWatchers(ws),
-  };
+  //   setVariableWatchers: (ws) => setVariableWatchers(ws),
+  // };
 
-  const canvasRef: React.RefObject<HTMLCanvasElement> = React.createRef();
-  const bubblesRef: React.RefObject<HTMLDivElement> = React.createRef();
+  // const canvasRef: React.RefObject<HTMLCanvasElement> = React.createRef();
+  // const bubblesRef: React.RefObject<HTMLDivElement> = React.createRef();
 
-  const browserKeyboardRef = useRef<BrowserKeyboard | null>(null);
-  //const browserMouseRef = useRef<BrowserMouse | null>(null);
-  const projectEngineRef = useRef<ProjectEngine | null>(null);
+  // const browserKeyboardRef = useRef<BrowserKeyboard | null>(null);
+  // //const browserMouseRef = useRef<BrowserMouse | null>(null);
+  // const projectEngineRef = useRef<ProjectEngine | null>(null);
 
-  useEffect(() => {
-    console.log("Stage effect: setting up keyboard/mouse/engine", compiledMod);
+  // useEffect(() => {
+  //   console.log("Stage effect: setting up keyboard/mouse/engine", compiledMod);
 
-    const canvas = failIfNull(
-      canvasRef.current,
-      "Stage effect: canvasRef is null"
-    );
-    const bubblesDiv = failIfNull(
-      bubblesRef.current,
-      "Stage effect: bubblesRef is null"
-    );
+  //   const canvas = failIfNull(
+  //     canvasRef.current,
+  //     "Stage effect: canvasRef is null"
+  //   );
+  //   const bubblesDiv = failIfNull(
+  //     bubblesRef.current,
+  //     "Stage effect: bubblesRef is null"
+  //   );
 
-    bubblesDiv.tabIndex = -1;
-    bubblesDiv.focus();
+  //   bubblesDiv.tabIndex = -1;
+  //   bubblesDiv.focus();
 
-    // All these ctors also "activate" the new object.
-    browserKeyboardRef.current = new BrowserKeyboard(bubblesDiv);
-    //browserMouseRef.current = new BrowserMouse(bubblesDiv);
-    projectEngineRef.current = new ProjectEngine(canvas, bubblesDiv, webAppAPI);
+  //   // All these ctors also "activate" the new object.
+  //   browserKeyboardRef.current = new BrowserKeyboard(bubblesDiv);
+  //   //browserMouseRef.current = new BrowserMouse(bubblesDiv);
+  //   projectEngineRef.current = new ProjectEngine(canvas, bubblesDiv, webAppAPI);
 
-    resetQuestion();
+  //   resetQuestion();
 
-    return () => {
-      console.log("Stage effect: tearing down keyboard/mouse/engine");
-      browserKeyboardRef.current!.deactivate();
-      //browserMouseRef.current!.deactivate();
-      projectEngineRef.current!.requestHalt();
-    };
-  });
+  //   return () => {
+  //     console.log("Stage effect: tearing down keyboard/mouse/engine");
+  //     browserKeyboardRef.current!.deactivate();
+  //     //browserMouseRef.current!.deactivate();
+  //     projectEngineRef.current!.requestHalt();
+  //   };
+  // });
 
   const sizeStyle = {
     width: `${displaySize.width}px`,
@@ -119,23 +119,23 @@ href='/login'">Login</a>
           />
         </div> */}
         
-        <VariableWatchers />
-        <div
+        {/* <VariableWatchers /> */}
+        {/* <div
           ref={bubblesRef}
           id="pytch-speech-bubbles"
           style={sizeStyle}
-        />
+        /> */}
         <div
           id="stage-resize-indicator"
           style={sizeStyle}
         />
       </div>
-      <canvas
+      {/* <canvas
           ref={canvasRef}
           id="pytch-canvas"
           width={displaySize.width*0}
           height={displaySize.height*0}
-        />
+        /> */}
     </div>
   );
 };

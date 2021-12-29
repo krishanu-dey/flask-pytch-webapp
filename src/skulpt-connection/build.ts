@@ -1,7 +1,6 @@
-import { Modal } from "react-bootstrap";
 import { IProjectContent } from "../model/project";
 import { assetServer } from "./asset-server";
-import { ensureSoundManager } from "./sound-manager";
+// import { ensureSoundManager } from "./sound-manager";
 
 declare var Sk: any;
 
@@ -46,10 +45,10 @@ export const build = async (
     pytch: { on_exception: handleError },
   });
   try {
-    ensureSoundManager();
-    Sk.pytch.async_load_image = (name: string) => {
-      return assetServer.loadImage(name);
-    };
+    // ensureSoundManager();
+    // Sk.pytch.async_load_image = (name: string) => {
+    //   return assetServer.loadImage(name);
+    // };
     var mod = await Sk.misceval.asyncToPromise(
       () => Sk.importMainWithBody("<stdin>", false, project.codeText, true)); 
     console.log(mod)

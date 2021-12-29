@@ -4,7 +4,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Tutorial from "./Tutorial";
 import ErrorReportList from "./ErrorReportList";
-import ProjectAssetList from "./ProjectAssetList";
+// import ProjectAssetList from "./ProjectAssetList";
 import EditorWebSocketInfo from "./EditorWebSocketInfo";
 import { liveReloadEnabled } from "../constants";
 import { LayoutChooser } from "./LayoutChooser";

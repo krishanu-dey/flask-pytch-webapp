@@ -16,8 +16,8 @@ import {
 import { activeProject, IActiveProject } from "./project";
 import { tutorialCollection, ITutorialCollection } from "./tutorials";
 import { reloadServer, IReloadServer } from "./live-reload";
-import { userTextInput, IUserTextInput } from "./user-text-input";
-import { variableWatchers, IVariableWatchers } from "./variable-watchers";
+// import { userTextInput, IUserTextInput } from "./user-text-input";
+// import { variableWatchers, IVariableWatchers } from "./variable-watchers";
 import {
   demoFromZipfileURL,
   IDemoFromZipfileURL,
@@ -34,8 +34,8 @@ export interface IPytchAppModel {
   errorReportList: IErrorReportList;
   reloadServer: IReloadServer;
   editorWebSocketLog: IPlainTextPane;
-  userTextInput: IUserTextInput;
-  variableWatchers: IVariableWatchers;
+  // userTextInput: IUserTextInput;
+  // variableWatchers: IVariableWatchers;
   demoFromZipfileURL: IDemoFromZipfileURL;
 }
 
@@ -50,7 +50,7 @@ export const pytchAppModel: IPytchAppModel = {
   errorReportList,
   reloadServer,
   editorWebSocketLog,
-  userTextInput,
-  variableWatchers,
+  // userTextInput,
+  // variableWatchers,
   demoFromZipfileURL,
 };
