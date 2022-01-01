@@ -1,8 +1,7 @@
 import { IProjectContent } from "../model/project";
-import { assetServer } from "./asset-server";
-// import { ensureSoundManager } from "./sound-manager";
 
 declare var Sk: any;
+declare var flaskIDE: any;
 
 const builtinRead = (fileName: string) => {
   if (
@@ -51,7 +50,7 @@ export const build = async (
     // };
     var mod = await Sk.misceval.asyncToPromise(
       () => Sk.importMainWithBody("<stdin>", false, project.codeText, true)); 
-    console.log(mod)
+    
     
     return { kind: BuildOutcomeKind.Success, compiledMod: mod };
   } catch (err) {
