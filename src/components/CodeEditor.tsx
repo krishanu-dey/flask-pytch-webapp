@@ -104,10 +104,10 @@ const CodeAceEditor = () => {
 const CodeEditor = () => {
   return (
     <div className="CodeEditor">
-      <div className="help-sidebar">
+      {/* <div className="help-sidebar">
         <HelpSidebar />
         <HelpSidebarOpenControl />
-      </div>
+      </div> */}
       <CodeAceEditor />
     </div>
   );

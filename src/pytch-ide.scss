@@ -3,6 +3,11 @@
 $drag-resizer-height: 0.5rem;
 $tooltip-background-color: #151;
 
+.App {
+  height: 100%; 
+  overflow: hidden;
+}
+
 .ProjectIDE {
   position: absolute;
   top: 0;

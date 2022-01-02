@@ -1,4 +1,4 @@
-export const stageWidth: number = 600;
+export const stageWidth: number = 500;
 export const stageHeight: number = 500;
 
 export const stageHalfWidth: number = 0.5 * stageWidth;

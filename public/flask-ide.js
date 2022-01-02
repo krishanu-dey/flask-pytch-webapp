@@ -25,8 +25,10 @@ function renderPage(url_requested, requestData) {
 
     const tag_id = document.getElementById("embedded_browser");
     console.log(jsHtmlString)
+    console.log("4: " + (new Date()).toISOString() + ' ::')
     setSrcDoc(Sk.ffi.remapToJs(jsHtmlString));
 
+    console.log("5: " + (new Date()).toISOString() + ' ::')
     return jsHtmlString
 }
 
@@ -41,6 +43,8 @@ class FlaskIDE {
     }
 
     renderPageHelper(url_requested, requestData) {
+        console.log("sssssssssssssss")
+        //url_requested = document.getElementById("url-bar").value;
         renderPage(url_requested, requestData)
     }
 }

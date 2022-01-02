@@ -7,6 +7,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 declare var Sk: any;
+declare var flaskIDE: any;
 
 export const focusStage = () => {
   document.getElementById("pytch-speech-bubbles")?.focus();
@@ -35,7 +36,20 @@ const GreenFlag = () => {
   );
   const build = useStoreActions((actions) => actions.activeProject.build);
 
-  const handleClick = () => build("running-project");
+  const handleClick = () => {
+    console.log("0: " + (new Date()).toISOString() + ' ::')
+    build("running-project");
+    console.log("green button")
+    
+    let urlButton = document.getElementById('url-bar-button')
+    console.log("1: " + (new Date()).toISOString() + ' ::')
+    setTimeout(() => { 
+      if (urlButton != null) urlButton.click(); },
+       500
+      );
+    //flaskIDE.renderPageHelper("/");
+    console.log("2: " + (new Date()).toISOString() + ' ::')
+  }
 
   const tooltipIsVisible = buttonTourProgressStage === "green-flag";
 

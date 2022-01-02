@@ -96,7 +96,7 @@ const IDE: React.FC<IDEProps> = ({ projectIdString }) => {
    useEffect(() => {
   //   Sk.pytch.current_live_project =
   //     Sk.default_pytch_environment.current_live_project;
-  //   document.title = `Project ${projectId}`;
+      document.title = `Project ${projectId}`;
 
       ensureSyncFromStorage(projectId);
 
