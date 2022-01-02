@@ -1,7 +1,7 @@
 import { assetData } from "../database/indexed-db";
 import { IAssetInProject } from "../model/asset";
 
-declare var Sk: any;
+//declare var Sk: any;
 
 // TODO: Does this whole file belong in "database"?
 

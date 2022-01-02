@@ -1,7 +1,6 @@
 import { IProjectContent } from "../model/project";
 
 declare var Sk: any;
-declare var flaskIDE: any;
 
 const builtinRead = (fileName: string) => {
   if (

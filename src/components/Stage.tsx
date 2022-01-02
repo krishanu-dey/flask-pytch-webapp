@@ -33,11 +33,6 @@ const Stage = () => {
     background: "white",
     overflowY: "scroll" as "scroll",
   }
-  const urlStyle = {
-    border: "thin: { compile?: any; }: { compile?: any; } solid black",
-    backgroundColor: "white",
-    maxWidth: "100%",
-  }
 
   let textInput = useRef<HTMLInputElement>(null);;
 
@@ -46,7 +41,7 @@ const Stage = () => {
     if (textInput.current == null || textInput.current.value == null) url_requested = "/";
     else url_requested = textInput.current.value;
     
-    if (url_requested == null || url_requested == "") url_requested = "/";
+    if (url_requested == null || url_requested === "") url_requested = "/";
     flaskIDE.renderPageHelper(url_requested)
   }
   

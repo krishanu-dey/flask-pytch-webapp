@@ -6,9 +6,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-declare var Sk: any;
-declare var flaskIDE: any;
-
 export const focusStage = () => {
   document.getElementById("pytch-speech-bubbles")?.focus();
 };
