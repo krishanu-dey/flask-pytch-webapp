@@ -50,7 +50,6 @@ export const build = async (
     var mod = await Sk.misceval.asyncToPromise(
       () => Sk.importMainWithBody("<stdin>", false, project.codeText, true)); 
     
-    
     return { kind: BuildOutcomeKind.Success, compiledMod: mod };
   } catch (err) {
     return { kind: BuildOutcomeKind.Failure, error: err };
