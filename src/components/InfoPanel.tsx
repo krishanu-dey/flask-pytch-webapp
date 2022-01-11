@@ -47,8 +47,10 @@ const InfoPanel = () => {
   const isTrackingTutorial = useStoreState(
     (state) => state.activeProject.project?.trackedTutorial != null
   );
-  const activeKey = useStoreState((state) => state.infoPanel.activeTabKey);
-  const setActiveKey = useStoreActions(
+
+  var activeKey = useStoreState((state) => state.infoPanel.activeTabKey);
+  // if (activeKey == "assets") activeKey = "output";
+    const setActiveKey = useStoreActions(
     (state) => state.infoPanel.setActiveTabKey
   );
   const layoutKind = useStoreState((state) => state.ideLayout.kind);

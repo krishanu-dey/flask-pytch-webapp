@@ -5,11 +5,11 @@ import ProjectList from "./components/ProjectList";
 import TutorialList from "./components/TutorialList";
 import IDE from "./components/IDE";
 
+//import "./darkmode.css";
 import "./pytch.scss";
 import "./pytch-ide.scss";
 import "./help-sidebar.scss";
 import "./font-awesome-lib";
-//import "./jinja";
 
 import { AllModals } from "./components/AllModals";
 import { SingleTutorial } from "./components/SingleTutorial";

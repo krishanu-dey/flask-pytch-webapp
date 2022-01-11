@@ -3,10 +3,6 @@
 $drag-resizer-height: 0.5rem;
 $tooltip-background-color: #151;
 
-// .App {
-  
-// }
-
 .ProjectIDE {
   position: absolute;
   top: 0;
@@ -22,7 +18,7 @@ $tooltip-background-color: #151;
   &.tall-code-editor {
     flex-direction: row;
   }
-  height: 99%; 
+  //height: 99%; 
   overflow: hidden;
 }
 

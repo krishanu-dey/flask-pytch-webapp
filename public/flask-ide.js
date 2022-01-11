@@ -103,8 +103,8 @@ function fixForms(jsHtmlString){
         all_forms[i].addEventListener('submit', handleForm);
 
         let route = all_forms[i].getAttribute("action")
-        const newAction = "onFormSubmit('" + all_forms[i].id + "', '" + route + "')"; 
-        all_forms[i].setAttribute("onclick", newAction);
+        const newAction = "return onFormSubmit('" + all_forms[i].id + "', '" + route + "')"; 
+        all_forms[i].setAttribute("onsubmit", newAction);
         all_forms[i].setAttribute("action", "javascript:void(0)");
     }
 

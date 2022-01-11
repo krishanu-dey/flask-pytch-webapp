@@ -331,7 +331,7 @@ export const activeProject: IActiveProject = {
     try {
       const descriptor = await projectDescriptor(projectId);
       const initialTabKey =
-        descriptor.trackedTutorial != null ? "tutorial" : "assets";
+        descriptor.trackedTutorial != null ? "tutorial" : "output";
 
       // TODO: Should the asset-server be local to the project?  Might
       // save all the to/fro with prepare/clear and knowing when to revoke
