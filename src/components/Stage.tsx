@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
-import { useStoreState } from "../store";
+import { errorReportList } from "../model/ui";
+import { useStoreState, useStoreActions } from "../store";
 
 declare var flaskIDE: any;
 
@@ -18,6 +19,10 @@ const Stage = () => {
 
   const displaySize = useStoreState(
     (state) => state.ideLayout.stageDisplaySize
+  );
+
+  const appendError = useStoreActions(
+    (actions) => actions.errorReportList.append
   );
 
   const resizeClass = false ? "resize-active" : undefined;
@@ -42,7 +47,13 @@ const Stage = () => {
     else url_requested = textInput.current.value;
     
     if (url_requested == null || url_requested === "") url_requested = "/";
-    flaskIDE.renderPageHelper(url_requested)
+    // wrap this around a try catch
+    // try {
+      flaskIDE.renderPageHelper(url_requested) 
+    // } catch(err) {
+    //   appendError(err)
+    // }
+
   }
   
   const keyDownInputBox = (e: any) => {
@@ -75,20 +86,6 @@ const Stage = () => {
             &gt; 
           </button> 
         </div>
-        {/* <input 
-          type="text" 
-          id="url-bar" 
-          style={urlStyle}
-          onKeyDown={keyDownInputBox}
-          ref={textInput}
-        />
-        <button 
-          type="button" 
-          id="url-bar-button"
-          onClick={renderPage}
-        > 
-          &gt; 
-        </button>  */}
       </div>
 
       <div style={embeddedBrowserStyle} className={resizeClass}>

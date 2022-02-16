@@ -32,20 +32,24 @@ const GreenFlag = () => {
     (state) => state.ideLayout.buttonTourProgressStage
   );
   const build = useStoreActions((actions) => actions.activeProject.build);
+  
+  const clickURLbutton = () => {
+    let urlButton = document.getElementById('url-bar-button')
+    if (urlButton != null) urlButton.click();
+  }
 
   const handleClick = () => {
-    console.log("0: " + (new Date()).toISOString() + ' ::')
-    build("running-project");
+    build("running-project").then(clickURLbutton);
     console.log("green button")
-    
-    let urlButton = document.getElementById('url-bar-button')
-    console.log("1: " + (new Date()).toISOString() + ' ::')
-    setTimeout(() => { 
-      if (urlButton != null) urlButton.click(); },
-       500
-      );
+
+    // console.log("0: " + (new Date()).toISOString() + ' ::')
+    // console.log("1: " + (new Date()).toISOString() + ' ::')
+    // setTimeout(() => { 
+    //   if (urlButton != null) urlButton.click(); },
+    //    2000
+    //   );
     //flaskIDE.renderPageHelper("/");
-    console.log("2: " + (new Date()).toISOString() + ' ::')
+    // console.log("2: " + (new Date()).toISOString() + ' ::')
   }
 
   const tooltipIsVisible = buttonTourProgressStage === "green-flag";
