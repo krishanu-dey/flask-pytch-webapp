@@ -1,15 +1,29 @@
-let compiledMod, setSrcDoc;
+class FlaskIDE {
+    compiledMod = null;
+    flaskIDE = null;
+
+    configure(cm, sd) {
+        this.compiledMod = cm;
+        this.setSrcDoc = sd;
+    }
+
+    renderPageHelper(url_requested, requestData) {
+        renderPage(url_requested, requestData)
+    }
+}
+
+var flaskIDE = new FlaskIDE();
 
 function renderPage(url_requested, requestData) {
-    const app = Sk.builtin.getattr(compiledMod, new Sk.builtin.str("app"));
+    const app = Sk.builtin.getattr(flaskIDE.compiledMod, new Sk.builtin.str("app"));
     const handleRouteFn = Sk.builtin.getattr(app, new Sk.builtin.str("handleRoute"));
     document.getElementById("url-bar").value = url_requested;
 
     if (!requestData) requestData = {}
     if (!("method" in requestData)) requestData["method"] = "GET";
 
-    console.log(url_requested)
-    console.log(requestData)
+    console.log("URL Route Requested: " + url_requested)
+    console.log("Request Message: " + requestData)
 
     const pyDict = handleRouteFn.tp$call([new Sk.builtin.str(url_requested), Sk.ffi.remapToPy(requestData)], {});
 
@@ -25,34 +39,13 @@ function renderPage(url_requested, requestData) {
 
     const tag_id = document.getElementById("embedded_browser");
     console.log(jsHtmlString)
-    console.log("4: " + (new Date()).toISOString() + ' ::')
-    setSrcDoc(Sk.ffi.remapToJs(jsHtmlString));
 
-    console.log("5: " + (new Date()).toISOString() + ' ::')
+    flaskIDE.setSrcDoc(Sk.ffi.remapToJs(jsHtmlString));
     return jsHtmlString
 }
 
-class FlaskIDE {
-    constructor() {
-      console.log("zzzzzzzzzzzzzzzzzzzzzzz")
-    }
-
-    configure(cm, sd) {
-        compiledMod = cm;
-        setSrcDoc = sd;
-    }
-
-    renderPageHelper(url_requested, requestData) {
-        console.log("sssssssssssssss")
-        //url_requested = document.getElementById("url-bar").value;
-        renderPage(url_requested, requestData)
-    }
-}
-
-var flaskIDE = new FlaskIDE();
-
 function goURL() { 
-    if (compiledMod != null) {
+    if (flaskIDE.compiledMod != null) {
      renderPage(document.getElementById("url_bar").value)
     } else {
      document.getElementById("output").innerHTML = "  Please click 'Run' to run Flask web app first."
