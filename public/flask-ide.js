@@ -83,9 +83,9 @@ function fixForms(jsHtmlString){
     for (var i = 0; i < all_forms.length; i++) {
         if (all_forms[i].id == "codeForm") continue
         if (all_forms[i].id == "") {
-        all_forms[i].id = String(idCounter);
-        all_forms[i].setAttribute("id", all_forms[i].id);
-        idCounter++;
+	        all_forms[i].id = String(idCounter);
+	        all_forms[i].setAttribute("id", all_forms[i].id);
+	        idCounter++;
         }
 
         var formMethod = all_forms[i].getAttribute("method")
