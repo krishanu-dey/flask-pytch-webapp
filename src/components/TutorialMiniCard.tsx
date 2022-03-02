@@ -7,10 +7,10 @@ import LoadingOverlay from "./LoadingOverlay";
 // TODO: Replace this temporary solution with something more integrated
 // with the pytch-tutorials repo.
 
-// const tutorialsDataRoot = failIfNull(
-//   process.env.REACT_APP_TUTORIALS_BASE,
-//   "must set REACT_APP_TUTORIALS_BASE env.var"
-// );
+const tutorialsDataRoot = failIfNull(
+  process.env.REACT_APP_TUTORIALS_BASE,
+  "must set REACT_APP_TUTORIALS_BASE env.var"
+);
 
 // Annoyingly, some tutorials call the demo screenshot "screenshot.png"
 // and some "summary-screenshot.png".  We should settle on a convention,
@@ -49,12 +49,12 @@ const TutorialMiniCard: React.FC<TutorialMiniCardProps> = ({
     <Alert className="TutorialMiniCard" variant="success">
       <h2>{title}</h2>
       <p>
-        {/* <img
+        <img
           className={`screenshot${enabledOrDisabled}`}
           onClick={maybeLaunchDemo}
           src={`${tutorialsDataRoot}/${slug}/tutorial-assets/${screenshotBasename}`}
           alt={`screenshot of ${title}`}
-        /> */}
+        />
       </p>
       {children}
       <LoadingOverlay show={loadingThisDemo}>

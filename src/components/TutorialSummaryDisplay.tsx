@@ -54,15 +54,15 @@ export const TutorialSummaryDisplay: React.FC<TutorialSummaryDisplayProps> = ({
             variant="outline-primary"
             onClick={launchDemo}
           >
-            Try this project
+            Try this Tutorial
           </Button>
-          <Button
+          {/* <Button
             disabled={loadingSomeTutorial}
             variant="outline-primary"
             onClick={launchTutorial}
           >
             Learn how to make this project
-          </Button>
+          </Button> */}
         </div>
       </Alert>
     </li>

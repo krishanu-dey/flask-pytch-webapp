@@ -18,13 +18,13 @@ export interface ITutorialContent {
   workInProgressChapter: number | null;
 }
 
-// const tutorialsDataRoot = failIfNull(
-//   process.env.REACT_APP_TUTORIALS_BASE,
-//   "must set REACT_APP_TUTORIALS_BASE env.var"
-// );
+const tutorialsDataRoot = failIfNull(
+  process.env.REACT_APP_TUTORIALS_BASE,
+  "must set REACT_APP_TUTORIALS_BASE env.var"
+);
 
 export const tutorialUrl = (relativeUrl: string) =>
-  [null, relativeUrl].join("/");
+  [tutorialsDataRoot, relativeUrl].join("/");
 
 export const patchImageSrcURLs = (slug: string, node: Node) => {
   if (!(node instanceof HTMLElement)) {
