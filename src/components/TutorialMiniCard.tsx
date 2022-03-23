@@ -48,14 +48,14 @@ const TutorialMiniCard: React.FC<TutorialMiniCardProps> = ({
   return (
     <Alert className="TutorialMiniCard" variant="success">
       <h2>{title}</h2>
-      <p>
+      {/* <p>
         <img
           className={`screenshot${enabledOrDisabled}`}
           onClick={maybeLaunchDemo}
           src={`${tutorialsDataRoot}/${slug}/tutorial-assets/${screenshotBasename}`}
           alt={`screenshot of ${title}`}
         />
-      </p>
+      </p> */}
       {children}
       <LoadingOverlay show={loadingThisDemo}>
         <p>Loading...</p>
