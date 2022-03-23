@@ -111,7 +111,6 @@ const StageControls = () => {
         <Button>MyStuff</Button>
       </Link>
       <DropdownButton alignRight title="⋮">
-        <Dropdown.Item onClick={onScreenshot}>Screenshot</Dropdown.Item>
         <Dropdown.Item onClick={onDownload}>Download as zipfile</Dropdown.Item>
         <Dropdown.Item onClick={onShowTooltips}>Show tooltips</Dropdown.Item>
       </DropdownButton>

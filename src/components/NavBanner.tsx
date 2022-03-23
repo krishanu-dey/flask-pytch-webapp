@@ -9,7 +9,7 @@ const NavBanner = () => {
     <div className="NavBar">
       <div className="title-and-version">
         <Link to="/">
-          <h1>Flask From Scratch</h1>
+          <h1>Flask from Scratch</h1>
         </Link>
         <p className="version-tag">
           <a href={withinSite("/doc/releases/changelog.html")}>{versionTag}</a>
@@ -23,7 +23,7 @@ const NavBanner = () => {
           <li>Tutorials</li>
         </Link>
         <Link to="/my-projects/">
-          <li>My projects</li>
+          <li>My Projects</li>
         </Link>
       </ul>
     </div>
