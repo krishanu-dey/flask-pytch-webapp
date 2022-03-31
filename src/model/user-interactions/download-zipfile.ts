@@ -110,7 +110,7 @@ const downloadZipfileSpecific: IDownloadZipfileSpecific = {
     const metaData = { projectName: dbProject.name };
     zipFile.file("meta.json", JSON.stringify(metaData));
 
-    zipFile.file("code/code.py", project.codeText);
+    zipFile.file("code/app.py", project.codeText);
 
     // // Ensure folder exists, even if there are no assets.
     // zipFile.folder("assets");

@@ -104,7 +104,7 @@ export const projectDescriptor = async (
   switch (versionNumber) {
     case 1:
       try {
-        const codeZipObj = _zipObjOrFail(zip, "code/code.py", bareError);
+        const codeZipObj = _zipObjOrFail(zip, "code/app.py", bareError);
         const codeText = await codeZipObj.async("text");
 
         const metadata = await _jsonOrFail(zip, "meta.json", bareError);
