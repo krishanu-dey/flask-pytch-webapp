@@ -1,3 +1,3 @@
-# Pytch (webapp)
+# Flask from Scratch (webapp)
 
-The webapp component of [Pytch](https://pytch.org/).
+The webapp component of Flask from Scratch.
